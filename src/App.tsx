@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Accordion from "./components/Accordion";
+import {Rating} from "./components/Raiting";
+import {OnnOff} from "./components/OnOff/OnOff";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//function declaration
+
+// function sum (a: number, b: number) {
+//
+//     alert(a + b);
+// }
+// sum (23,12);
+
+
+const App = (props:any) => {
+    console.log('App rendering')
+    //  что-то полезное
+    // ф-я обязана вернуть JSX
+    return (
+        <div>
+            <Accordion accordionTitle={'AccordionTitleOne'} collapsed={true}/>
+            <Accordion accordionTitle={'AccordionTitleTwo'} collapsed={false}/>
+            <Rating value={0}/>
+            <Rating value={1}/>
+            <Rating value={2}/>
+            <Rating value={3}/>
+            <Rating value={4}/>
+            <Rating value={5}/>
+            <OnnOff mode={true}/>
+            <OnnOff mode={false}/>
+        </div>
+    );
 }
+
+type PageTitlePropsType = {
+    title: string;
+}
+
+function PageTitle(props: PageTitlePropsType) {
+    console.log('PageTitle rendered')
+    return <h1>{props.title}</h1>
+}
+
 
 export default App;
