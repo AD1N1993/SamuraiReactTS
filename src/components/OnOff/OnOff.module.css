@@ -1,0 +1,32 @@
+.wrapper {
+    display: flex;
+}
+
+.on {
+    width: 100px;
+    height: 50px;
+    border: 1px solid #000000;
+    text-align: center;
+    line-height: 50px;
+}
+
+.off {
+    width: 100px;
+    height: 50px;
+    border: 1px solid #000000;
+    text-align: center;
+    line-height: 50px;
+}
+
+.btn {
+    background-color: transparent;
+    border-radius: 50%;
+    width: 50px;
+}
+
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}

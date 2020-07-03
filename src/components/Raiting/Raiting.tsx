@@ -6,10 +6,10 @@ type RaitingPropsType = {
 
 export function Rating(props: RaitingPropsType) {
     console.log('Raiting rendered')
-    return  (
+    return (
         <div>
-            <Star selected={props.value > 0 }/>
-            <Star selected={props.value > 1 }/>
+            <Star selected={props.value > 0}/>
+            <Star selected={props.value > 1}/>
             <Star selected={props.value > 2}/>
             <Star selected={props.value > 3}/>
             <Star selected={props.value > 4}/>
@@ -24,10 +24,9 @@ type StarPropsType = {
 
 function Star(props: StarPropsType) {
     console.log('Star rendered');
-    if (props.selected === true) {
-        return <span><b>star</b> </span>
+    if (props.selected) {
+        return <span><b>star</b></span>
     } else {
-        return <span>star </span>
+        return <span>star</span>
     }
-
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
-import Accordion from "./components/Accordion";
-import {Rating} from "./components/Raiting";
-import {OnnOff} from "./components/OnOff/OnOff";
+import Accordion from "./components/Accardion/Accordion";
+import {Rating} from "./components/Raiting/Raiting";
+import {OnOff} from "./components/OnOff/OnOff";
+import UncotrolledAccordion from "./components/UncontrolledAccardion/UCAccordion";
+import {UCRating} from "./components/UncotrolledRaiting/UCRaiting";
 
 //function declaration
 
@@ -27,8 +29,11 @@ const App = (props:any) => {
             <Rating value={3}/>
             <Rating value={4}/>
             <Rating value={5}/>
-            <OnnOff mode={true}/>
-            <OnnOff mode={false}/>
+            <OnOff />
+            <OnOff />
+            <UncotrolledAccordion accordionTitle={'UncotrolledAccaordionOne'} />
+            <UncotrolledAccordion accordionTitle={'UncotrolledAccaordionTwo'} />
+            <UCRating />
         </div>
     );
 }
