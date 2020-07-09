@@ -1,39 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Accordion from "./components/Accardion/Accordion";
-import {Rating} from "./components/Raiting/Raiting";
-import {OnOff} from "./components/OnOff/OnOff";
+import {RaitingValueType, Rating} from "./components/Raiting/Raiting";
+import {UnControlledOnOff} from "./components/UnControlledOnOff/UnControlledOnOff";
 import UncotrolledAccordion from "./components/UncontrolledAccardion/UCAccordion";
 import {UCRating} from "./components/UncotrolledRaiting/UCRaiting";
-
-//function declaration
-
-// function sum (a: number, b: number) {
-//
-//     alert(a + b);
-// }
-// sum (23,12);
-
-
-const App = (props:any) => {
+import {OnOff} from "./components/OnOff/OnOff";
+const App = (props: any) => {
     console.log('App rendering')
-    //  что-то полезное
-    // ф-я обязана вернуть JSX
+
+    let [raitingValue, setRaiting] = useState<RaitingValueType>(0)
+    let [accordion, setAccordion] = useState<boolean>(true);
+    let [on, setOn] = useState<boolean>(false);
+
     return (
-        <div>
-            <Accordion accordionTitle={'AccordionTitleOne'} collapsed={true}/>
-            <Accordion accordionTitle={'AccordionTitleTwo'} collapsed={false}/>
-            <Rating value={0}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
-            <OnOff />
-            <OnOff />
-            <UncotrolledAccordion accordionTitle={'UncotrolledAccaordionOne'} />
-            <UncotrolledAccordion accordionTitle={'UncotrolledAccaordionTwo'} />
-            <UCRating />
+        <div className={"wrapper"}>
+            <UnControlledOnOff onChange={setOn}/>  {on.toString()}
+            <UncotrolledAccordion accordionTitle={'UncotrolledAccordionOne'}/>
+            <UCRating/>
+            <div>____________________________</div>
+            <Rating
+                value={raitingValue}
+                onClick={setRaiting}
+            />
+            <Accordion
+                accordionTitle={"Controlled Accordion"}
+                collapsed={accordion}
+                onClick = {()=> {setAccordion(!accordion)} }/>
+                
+            {/*<OnOff*/}
+            {/*    mode={on}*/}
+            {/*    onClick ={setOn}/>*/}
+            
+           <UncotrolledAccordion accordionTitle={"--BlaBla--"}   />
         </div>
     );
 }

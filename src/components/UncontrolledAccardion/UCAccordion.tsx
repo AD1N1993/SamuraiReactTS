@@ -10,9 +10,7 @@ function UncotrolledAccordion(props: AccordionPropsType) {
     console.log('Accordion rendered')
     return (
         <div>
-            <button onClick={()=> {setUA(false)}}>Open</button>
-            <button onClick={()=> {setUA(true)}}>Close</button>
-            <AccordionTitle mainTitle={props.accordionTitle}/>
+            <AccordionTitle mainTitle={props.accordionTitle} onClick={ ()=>{setUA(!collapsed) } }/>
             {!collapsed && <AccordionBody/>}
         </div>
     );
@@ -20,11 +18,12 @@ function UncotrolledAccordion(props: AccordionPropsType) {
 
 type AccordionTitlePropsType = {
     mainTitle: string
+    onClick: ()=> void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     console.log('AccordionTitle rendered')
-    return <h3>{props.mainTitle}</h3>
+    return <h3 onClick={ ()=>{ props.onClick() } }>{props.mainTitle}</h3>
 }
 
 function AccordionBody() {
