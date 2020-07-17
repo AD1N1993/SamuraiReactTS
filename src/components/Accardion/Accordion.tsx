@@ -8,7 +8,7 @@ type AccordionPropsType = {
     onClick: ()=> void
  }
 
-function Accordion1(props: AccordionPropsType) {
+export function Accordion1(props: AccordionPropsType) {
     console.log('Accordion rendered')
     return (
         <div>
@@ -27,7 +27,7 @@ type AccordionTitlePropsType = {
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     console.log('AccordionTitle rendered')
-    return <h3 onClick={props.onClick}>{props.mainTitle}</h3>
+    return <h3 onClick={(e)=>props.onClick()}>{props.mainTitle}</h3>
 }
 
 function AccordionBody() {
@@ -41,4 +41,3 @@ function AccordionBody() {
     );
 }
 
-export default Accordion1;

@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import './App.css';
-import Accordion from "./components/Accardion/Accordion";
+
 import {RaitingValueType, Rating} from "./components/Raiting/Raiting";
 import {UnControlledOnOff} from "./components/UnControlledOnOff/UnControlledOnOff";
 import UncotrolledAccordion from "./components/UncontrolledAccardion/UCAccordion";
 import {UCRating} from "./components/UncotrolledRaiting/UCRaiting";
 import {OnOff} from "./components/OnOff/OnOff";
+import {Accordion1} from "./components/Accardion/Accordion";
 const App = (props: any) => {
     console.log('App rendering')
 
@@ -17,13 +18,13 @@ const App = (props: any) => {
         <div className={"wrapper"}>
             <UnControlledOnOff onChange={setOn}/>  {on.toString()}
             <UncotrolledAccordion accordionTitle={'UncotrolledAccordionOne'}/>
-            <UCRating/>
+            <UCRating onChange={alert}/>
             <div>____________________________</div>
             <Rating
                 value={raitingValue}
                 onClick={setRaiting}
             />
-            <Accordion
+            <Accordion1
                 accordionTitle={"Controlled Accordion"}
                 collapsed={accordion}
                 onClick = {()=> {setAccordion(!accordion)} }/>
