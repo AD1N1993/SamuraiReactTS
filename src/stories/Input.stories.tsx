@@ -40,7 +40,7 @@ export const ControledInput = () => {
 }
 export const ControledCheckbox = () => {
     const [parentValue, setValue] = useState(true);
-    debugger
+
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.checked)
     };
@@ -51,7 +51,7 @@ export const ControledCheckbox = () => {
 }
 export const ControledSelect = () => {
     const [parentValue, setValue] = useState<string | undefined>("2");
-    debugger
+
     const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setValue(e.currentTarget.value)
     };
