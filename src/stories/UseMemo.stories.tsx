@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 
 export default {
     title: 'Use Memo'
@@ -60,17 +60,67 @@ export const HelpsMemo = () => {
     const [users, setUsers] = useState<Array<string>>(["Dimych", "Yury", "Valery"]);
 
     const newArray = useMemo(() => {
-        return users.filter(u => u.toLowerCase().indexOf('a') > -1 );
+        return users.filter(u => u.toLowerCase().indexOf('a') > -1);
     }, [users])
-    const addUser = () =>{
-        const newUser = [...users,'Sveta' + new Date().getTime()]
+    const addUser = () => {
+        const newUser = [...users, 'Sveta' + new Date().getTime()]
         setUsers(newUser);
     }
     return (
         <>  <Users users={newArray}/>
             <button onClick={addUser}>add</button>
-            <button onClick={()=>{setCounter(counter + 1)}}>+</button>{counter}
+            <button onClick={() => {
+                setCounter(counter + 1)
+            }}>+
+            </button>
+            {counter}
 
         </>
     )
 }
+
+
+export const LikeUseCallback = () => {
+    console.log("LikeUseCallback");
+    const [counter, setCounter] = useState<number>(0);
+    const [books, setBooks] = useState<Array<string>>(["HTML", "CSS", "JS"]);
+
+
+    const memozideAddBook = useMemo(() => {
+        return () => {
+            console.log(books);
+            const newUser = [...books, 'Angular' + new Date().getTime()]
+            setBooks(newUser);
+        }
+    }, [books]);
+    const memozideAddBook2 = useCallback(() => {
+        console.log(books);
+        const newUser = [...books, 'Angular' + new Date().getTime()]
+        setBooks(newUser);
+    }, [books]);
+
+    return (
+        <>  <Book addBook={memozideAddBook2}/>
+
+            <button onClick={() => {
+                setCounter(counter + 1)
+            }}>+
+            </button>
+            {counter}
+
+        </>
+    )
+}
+
+type BookSecretTypeProps = {
+    addBook: () => void
+}
+const BooksSecret = (props: BookSecretTypeProps) => {
+    console.log("BooksSecret")
+    return <div>
+        <button onClick={props.addBook}>add</button>
+
+    </div>
+}
+
+const Book = React.memo(BooksSecret);
