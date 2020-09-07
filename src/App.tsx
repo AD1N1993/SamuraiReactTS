@@ -7,6 +7,7 @@ import UncotrolledAccordion from "./components/UncontrolledAccardion/UCAccordion
 import {UCRating} from "./components/UncotrolledRaiting/UCRaiting";
 import {Accordion1} from "./components/Accardion/Accordion";
 import {Select} from "./components/Select/Select";
+import {Clock} from "./components/Clock/Clock";
 
 const App = (props: any) => {
 
@@ -50,6 +51,7 @@ const App = (props: any) => {
             {/*    onClick ={setOn}/>*/}
 
             <UncotrolledAccordion accordionTitle={"--BlaBla--"}/>
+            <Clock/>
         </div>
     );
 }
