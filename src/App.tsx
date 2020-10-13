@@ -8,6 +8,7 @@ import {UCRating} from "./components/UncotrolledRaiting/UCRaiting";
 import {Accordion1} from "./components/Accardion/Accordion";
 import {Select} from "./components/Select/Select";
 import {Clock} from "./components/Clock/Clock";
+import {UserManagementApp, UserPublic} from "./components/HooksExample/HooksExamples";
 
 const App = (props: any) => {
 
@@ -51,7 +52,9 @@ const App = (props: any) => {
             {/*    onClick ={setOn}/>*/}
 
             <UncotrolledAccordion accordionTitle={"--BlaBla--"}/>
-            <Clock/>
+            <Clock mode={"analog"}/>
+            <UserManagementApp/>
+            <UserPublic/>
         </div>
     );
 }
