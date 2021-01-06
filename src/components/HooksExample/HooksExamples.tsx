@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {GetProfileType, profileAPI, usersAPI} from "../../api";
 
 
-const useUsers = () =>{
+const useUsers = () => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
         const requestUsers = async () => {
@@ -20,9 +20,9 @@ export const UserManagementApp = () => {
     const [userId, setUserId] = useState<any>(null);
     console.log("UserManagementApp");
 
-const onClick =useCallback((userId:number)=>{
-    setUserId(userId)
-},[])
+    const onClick = useCallback((userId: number) => {
+        setUserId(userId)
+    }, [])
     return <>
         <Users users={users} onClick={onClick}/>
         <Details userId={userId}/>
@@ -33,7 +33,7 @@ export const UserPublic = () => {
     console.log("UserPublic");
 
     return <>
-        <Users users={users} onClick={()=>{}}/>
+        <Users users={users} onClick={() => {}}/>
     </>
 }
 type userType = {
@@ -45,7 +45,7 @@ type usersPropsType = {
     users: userType[]
     onClick: (userId: number) => void
 }
-export const Users =React.memo( (props: usersPropsType) => {
+export const Users = React.memo((props: usersPropsType) => {
     console.log("USersLSIT Rendered");
     return <>
         <ul>
@@ -55,28 +55,28 @@ export const Users =React.memo( (props: usersPropsType) => {
     </>
 })
 type DetailsPropsType = {
-    userId: number|null
+    userId: number | null
 }
 export const Details = (props: DetailsPropsType) => {
     const [profile, setProfile] = useState(null)
 
     console.log("Deteils Rendered");
 
-    useEffect(()=>{
-        let resultObj:GetProfileType|null = null;
+    useEffect(() => {
+        let resultObj: GetProfileType | null = null;
 
         const LoadProfile = async () => {
-            if(props.userId === null)return
-             resultObj = profileAPI.getProfile(props.userId);
+            if (props.userId === null) return
+            resultObj = profileAPI.getProfile(props.userId);
             console.log(resultObj)
             let profile = await resultObj.resultPromise;
             setProfile(profile.data.fullName)
         }
         LoadProfile();
-         return ()=>{
+        return () => {
             resultObj?.cancel();
-         }
-    },[props.userId])
+        }
+    }, [props.userId])
 
     return <>
         <div>
